@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.phonegap.example"
+    version   = "1.0.3">
+
+<name>Veille académique Asie Pacifique</name>
+
+<description>
+Application dévéloppée par le bureau Asie - Pacifique pour la cartographie des formation
+</description>
+
+<author href="www.abidjan.net" email="gorbiromaric@gmail.com">
+Bureau Asie pacifique
+</author>
+<icon src="icon.png" />
+<icon src="icon.png" gap:platform="android" gap:qualifier="ldpi" />
+<gap:splash src="carte.png" />
+<gap:splash src="carte.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
+<gap:splash src="carte.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
+<access origin="*" />
+</widget>
