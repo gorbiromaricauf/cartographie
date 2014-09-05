@@ -14,83 +14,69 @@
 </head>
 
 <body >
-<div data-role="page" id="index"     >
+<div data-role="page" id="index"   >
   <div data-role="header"  data-theme="b" data-position="fixed">
-    <h1>Formations Asie Pacifique</h1>
+    <h1>Formations Asie Pacifique</h1> <a href="#menuright" data-icon="grid" data-iconpos="right" class="ui-btn-right ui-btn-icon-notext"></a>
   </div>
-  <div role="main" class="ui-content">
-  
-  
+  <div data-role="main" class="ui-content" align="center" >
+  <img src="jm/images/ajax-loader.gif" width="46" height="46">
+  </div>
+ <div data-role="footer" data-position="fixed" data-theme="b" data-id="foot">
+    <h4>Cartographie des formations</h4>
+  </div>
+  </div>
+<div data-role="page" id="home"   >
+  <div data-role="header"  data-theme="b" data-position="fixed">
+    <h1>Formations Asie Pacifique</h1> <a href="#menuright" data-icon="grid" data-iconpos="right" class="ui-btn-right ui-btn-icon-notext"></a>
+  </div>
+  <div data-role="main" class="ui-content" id="formulaire">
 		<h2>Chercher une formation  </h2>
-		<label for="pays" class="select">Pays</label>
-	<select name="pays" id="pays" data-native-menu="false">
-		<option>Pays</option>
-		<option value="KHM">Cambodge</option>
-		<option value="CHN">Chine</option>
-		<option value="FJI">Fidji</option>
-		<option value="103">Inde</option>
-		<option value="JPN">Japon</option>
-		<option value="LAO">Laos</option>
-		<option value="MNG">Mongolie</option>
-		<option value="THA">Thaïlande</option>
-		<option value="VUT">Vanuatu</option>
-		<option value="VNM">Viet Nam</option>
-	</select>
-	<label for="etablissement" class="select">Etablisement</label>
-	<select name="etablissement" id="etablissement" data-native-menu="false">
-		<option>Etablisement</option>
-		<option value="standard">Académie de Sciences et de Technologies du Vietnam</option>
-		<option value="rush">Académie des sciences sociales du Vietnam</option>
-		<option value="express">Académie diplomatique du Vietnam</option>
-		<option value="overnight">Académie nationale de politique et d'administration publique</option>
-		<option value="overnight">Académie Royale du Cambodge</option>
-		<option value="overnight">Centre des sciences humaines</option>
-		<option value="overnight">Centre franco-vietnamien de formation à la gestion</option>
-		<option value="overnight">École nationale supérieure de génies civils de Hanoi </option>
-		<option value="overnight">École normale supérieure de Hanoi</option>
-	</select>
-	<label for="discipline" class="select">Discipline</label>
-	<select name="discipline" id="discipline" data-native-menu="false">
-		<option>Discipline</option>
-		<option value="standard">Santé et sécurité au travail</option>
-		<option value="rush">Protection des personnes et des biens</option>
-		<option value="express">Services de sécurité</option>
-		<option value="overnight">Protection de l'environnement (autres)</option>
-		<option value="overnight">Services sanitaires pour la communauté</option>
-		<option value="overnight">Environnements naturels, faune et flore</option>
-		<option value="overnight">Technologies de protection de l'environnement</option>
-		<option value="overnight">Potection de l'environnement</option>
-		<option value="overnight">Services de transport</option>
-	</select>
-	<label for="niveau" class="select">Niveau</label>
-	<select name="niveau" id="niveau" data-native-menu="false">
-		<option>Niveau</option>
-		<option value="standard">Master</option>
-		<option value="rush">Doctorat</option>
-		<option value="rush">Licence</option>
-		
-	</select>
-	<br><br>
-		<div align="center"><button   id="rechercher_formation" data-theme="l" style="background-color:#7bb43b;color:black;" class="ui-btn ui-btn-inline center">Rechercher</button></div>
+        <div id="form"></div> 
+       
+	<br>
+		<div align="center" class="ui-block-a center" >
+		 <div class="ui-block-a"> <button   id="rechercher_formation" data-theme="l" style="background-color:#7bb43b;color:black;" class="ui-btn  ui-btn-inline">Rechercher</button></div> <div id="loading" class="ui-block-b " style="padding:8px; display:none;"><img src="jm/images/ajax-loader.gif" width="46" height="46"></div></div>
   
         </div>
   <div data-role="footer" data-position="fixed" data-theme="b" data-id="foot">
     <h5>Cartographie des formations</h5>
   </div>
+  
 </div>
-<div data-role="page" id="resultat">
-  <div data-role="header">
-    <h1>Résultat de la recherche</h1>
+ <div data-role="panel" id="menuright" data-position="right" data-display="overlay" data-theme="b" >
+    <div class="main">
+   <a href="#presentation" class="ui-btn ui-corner-all "  >A propos </a>
+   <a href="#presentation" class="ui-btn ui-corner-all "  >Bureau Asie Pacifique </a>
+   <a href="#presentation" class="ui-btn ui-corner-all "  >Statistiques </a>
+    
+   </div>
+</div>
+   
+<div data-role="page" id="resultat" data-add-back-btn="true">
+  <div data-role="header" data-position="fixed" data-theme="b">
+    <h1>Résultat de la recherche</h1><a id="btn-back" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left"  > Retour </a>
   </div>
   <div data-role="content">
-  <div data-role="collapsibleset" data-theme="a" data-content-theme="a" id="resultat_recherche">
+  	<div data-role="collapsibleset" data-theme="a" data-content-theme="a" id="resultat_recherche">
     
-</div>
+	</div>
  </div>
    <div data-role="footer" data-position="fixed" data-theme="b" data-id="foot">
     <h4>Cartographie des formations</h4>
   </div>
 </div>
+<div data-role="page" class="" data-add-back-btn="true"  id="details" >
+	
+	<div id="headerdetails" data-theme="b" data-role="header" data-position="fixed"> <h1>Détails de la formation</h1>  <a id="btn-back" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left"  > Retour </a>  </div>
+	<div role="main" class="ui-content"  id="contenusite">
+    	<IFRAME id="frameId" src="" width="100%"  scrolling=auto frameborder=0 > </IFRAME>
+    </div>
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    
+</div>
+    
+    </div>
 <script src="jm/jquery-1.8.0.min.js"></script>
 
 <script src="jm/jquery.mobile-1.4.2.min.js"></script>
