@@ -24,7 +24,7 @@ $(function() {
 		$.mobile.changePage('#details', "up", true, true);
 		$("#frameId").load(function() {
 			
-			$(this).height( viewport.height-100 );
+			$(this).height( (viewport.height/10)*8 );
 		});
 		$('body').find('#details').page();
 						
