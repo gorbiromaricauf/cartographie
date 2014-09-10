@@ -16,7 +16,7 @@ $(function() {
 	      
 		details = $(this).attr('data-title');
 		lien_details = 'http://outils.vn.auf.org/cartographie/formation-francophone/mobile-'+details;
-		frame ='<IFRAME id="frameId" src="'+lien_details+'" width="100%"  scrolling=auto frameborder=1 > </IFRAME>';
+		frame ='<IFRAME id="frameId" src="'+lien_details+'" width="100%"  scrolling=auto frameborder=0 > </IFRAME>';
 		theframe = $(frame);
 		//theframe.appendTo($("#contenusite"));		
 		$("#contenusite").html(theframe);
@@ -61,12 +61,12 @@ $(function() {
 
 }
 function loaddata(theurl,codes, noms,id){
-	
+	theurl+= '?page_size=500';
 	 $.ajax({
 		type: 'GET',
 		dataType: "jsonp",
 		url: theurl,
-		timeout: 30000,
+		timeout: 40000,
 		crossDomain: true,
 		success: function (responseData, textStatus, jqXHR) {
 			
@@ -97,7 +97,7 @@ function loaddata(theurl,codes, noms,id){
 				//$.mobile.changePage('#home', "slide", true, true);
 				if(id =='Niveau'){
 					$('#home').page();
-					
+					$('#loading').hide();
 					setTimeout(function(){$.mobile.changePage('#home', "slide", true, true)}, 3000);
 					//$.mobile.changePage('#home', {transition:'slide'})
 				}
@@ -108,7 +108,7 @@ function loaddata(theurl,codes, noms,id){
 		},
 		error: function (responseData, textStatus, errorThrown) {
 				if(textStatus == 'timeout')
-				{     
+				{    $('#loading').hide(); 
 					alert('Vérifiez votre connexion internet'); 
 					
 				}
@@ -116,25 +116,28 @@ function loaddata(theurl,codes, noms,id){
 	});
 }
 function ajax(theurl){
-	
+	theurl+= '&page_size=1000';
 	aaa=  $.ajax({
 		type: 'GET',
 		dataType: "jsonp",
 		url: theurl,
-		timeout:30000,
+		timeout:50000,
 		crossDomain: true,
 		success: function (responseData, textStatus, jqXHR) {
 			
 				var datas = responseData.results;
-				var  template='';
+				var template='';
 				var encours ='';
 				var encours_nom ='';
-				nbre =1;
+				var nbre = 1;
 				
 				for(i=0;i<datas.length;i++ ){
 				
      if(encours != datas[i].etablissement.id){
-		if(encours!=''){ template +=' </ul> <h5 >'+encours_nom+'<span class="ui-li-count">'+nbre+'</span></h5></div>';nbre =1;}
+		if(encours!='')
+			{ template +=' </ul> <h5 >'+encours_nom+'<span class="ui-li-count">'+nbre+'</span></h5></div>';
+			nbre =1;
+			}
 		 
 		 template +='<div data-role="collapsible" data-theme="a" class="collapse">';
   		 
@@ -143,32 +146,33 @@ function ajax(theurl){
 		template +='  <li class="formation" data-title="'+datas[i].id+'"><a href="#">';
 		template +='  <h5 class="white-space">'+datas[i].nom+'</h5>';
 		template +=' <p><strong>'+datas[i].niveau_diplome.nom +'</strong> '+datas[i].etablissement.pays.nom+' </p></a></li>';
+		encours_nom =datas[i].etablissement.nom;
 		encours = datas[i].etablissement.id;
-		encours_nom = datas[i].etablissement.nom
          
        
-		}else{
+	}else
+		{
 			nbre++;
 			template +='  <li class="formation" data-title="'+datas[i].id+'"><a href="#">';
            template +='  <h5 class="white-space">'+datas[i].nom+'</h5>';
-           template +=' <p><strong>'+datas[i].niveau_diplome.nom +'</strong> '+datas[i].etablissement.pays.nom+' </p></a></li>';
-		   
-			}
+           template +=' <p><strong>'+datas[i].niveau_diplome.nom +'</strong> '+datas[i].etablissement.pays.nom+' </p></a></li>';	   
+		}
     
-				}
+}
+	
+				template +=' </ul> <h5 >'+encours_nom+'<span class="ui-li-count">'+nbre+'</span></h5></div>';
+							
+				$('#resultat_recherche').append(template);
 				
-				$('#resultat_recherche').append(template).listview();
-				$('#resultat_recherche .ui-listview').listview();
-				$('#resultat_recherche .collapse').collapsible();
 				
-				if(responseData.next === null){
+				
+					$('#resultat_recherche .ui-listview').listview();
+					$('#resultat_recherche .collapse').collapsible();
 					$('#loading').hide();
 					$('#resultat').page();
+					
 					setTimeout(function(){$.mobile.changePage('#resultat', "slide", true, true)}, 3000);
-				}else{
-					//responseData.next += '&ordering =etablissement__nom';
-					ajax(responseData.next);
-				}
+				
 				
 		},
 		error: function (responseData, textStatus, errorThrown) {
