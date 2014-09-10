@@ -23,7 +23,8 @@ $(function() {
 		$.mobile.initializePage();		
 		$.mobile.changePage('#details', "up", true, true);
 		$("#frameId").load(function() {
-			$(this).height( viewport.height );
+			
+			$(this).height( viewport.height-100 );
 		});
 		$('body').find('#details').page();
 						
