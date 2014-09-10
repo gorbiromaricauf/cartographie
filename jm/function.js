@@ -21,10 +21,10 @@ $(function() {
 		//theframe.appendTo($("#contenusite"));		
 		$("#contenusite").html(theframe);
 		$.mobile.initializePage();		
-		$.mobile.changePage('#details', "up", true, true);
+		$.mobile.changePage('#details', "slide", true, true);
 		$("#frameId").load(function() {
 			
-			$(this).height( (viewport.height/10)*8 );
+			$(this).height( viewport.height );
 		});
 		$('body').find('#details').page();
 						
