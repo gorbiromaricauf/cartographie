@@ -1,11 +1,14 @@
  
 $(function() {
 	$( "body>[data-role='panel']" ).panel();
+	$( "#mention_legal" ).enhanceWithin().popup();
 	$('#rechercher_formation').bind( "tap", envoie_formulaire );
 	var niveau_url =  'http://outils.vn.auf.org/basemodel/api_niveau_list/';
 	var discipline_url = 'http://outils.vn.auf.org/basemodel/api_discipline_list/';
 	var etab_url ='http://outils.vn.auf.org/basemodel/api_etab_list/';
 	var pays_url = 'http://outils.vn.auf.org/basemodel/api_pays_list/';
+	$('[data-role="header"]').prepend('	<a href="#mention_legal" data-rel="popup" data-icon="grid" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop"></a><div id=""><div class="logo"><img src="images/mb-logo-tracuu.png" />	</div></div> ');
+
 	var viewport = {
     width  : $(window).width(),
     height : $(window).height()
@@ -34,7 +37,7 @@ $(function() {
 		$('#loading').show();
 		$('#resultat_recherche').html('');
 	
-	pays = $("#Pays").val();
+	pays = $("#Pays").val(); 
 	etablissement = $("#Etablissement").val();
 	discipline = $("#Discipline").val();
 	niveau = $("#Niveau").val();
@@ -57,6 +60,7 @@ $(function() {
     url += "&ordering=etablissement__nom&format=jsonp";
 	
 	var test = 'Romaric est le fils du Dieu tout puissant';
+	alert(url);
 	var resultat ='';
 	ajax(url);
 
@@ -117,7 +121,7 @@ function loaddata(theurl,codes, noms,id){
 	});
 }
 function ajax(theurl){
-	theurl+= '&page_size=1000';
+	theurl+= '&page_size=700';
 	aaa=  $.ajax({
 		type: 'GET',
 		dataType: "jsonp",
